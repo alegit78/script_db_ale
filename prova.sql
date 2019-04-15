@@ -1,1 +1,1 @@
-select name from v$database;
+create table prova_ale (nn number);
