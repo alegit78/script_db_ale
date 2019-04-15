@@ -1,0 +1,1 @@
+tnsping ltocav446.servizi.rai.it
