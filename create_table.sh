@@ -1,1 +1,1 @@
-echo 'ciao'
+create table prova nn(number);
