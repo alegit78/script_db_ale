@@ -10,7 +10,7 @@ jobs:
     - name: Tentativo di connessione alla porta 22
       run: |
         echo "Tentativo di connessione..."
-        if nc -z -w 10 utocav423.admin.servizi.rai.it 22; then
+        if nc -z -w 10 ltocav911.admin.servizi.rai.it 22; then
           echo "✅ SUCCESSO: La porta 22 è APERTA!"
         else
           echo "❌ ERRORE: La porta 22 è CHIUSA o bloccata."
