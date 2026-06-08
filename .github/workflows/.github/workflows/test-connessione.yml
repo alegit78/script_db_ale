@@ -1,6 +1,5 @@
 name: Test Connettivita Porta 22
 
-# Trigger super semplice: parte da solo appena salvi (fai il push)
 on: [push]
 
 jobs:
@@ -10,7 +9,7 @@ jobs:
     steps:
     - name: Tentativo di connessione alla porta 22
       run: |
-        echo "Tentativo di connessione a utocav423.admin.servizi.rai.it sulla porta 22..."
+        echo "Tentativo di connessione..."
         if nc -z -w 10 utocav423.admin.servizi.rai.it 22; then
           echo "✅ SUCCESSO: La porta 22 è APERTA!"
         else
