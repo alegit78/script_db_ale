@@ -1,0 +1,21 @@
+name: Test Connettività Porta 22
+
+on:
+  workflow_dispatch: # Ti permette di avviarlo a mano con il pulsante
+
+jobs:
+  check-port:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Tentativo di connessione alla porta 22
+      run: |
+        echo "Tentativo di connessione a utocav423.admin.servizi.rai.it sulla porta 22..."
+        
+        # Usiamo il comando nc (netcat) con un timeout di 10 secondi (-w 10)
+        if nc -z -w 10 utocav423.admin.servizi.rai.it 22; then
+          echo "✅ SUCCESSO: La porta 22 è APERTA e raggiungibile da GitHub!"
+        else
+          echo "❌ ERRORE: La porta 22 è CHIUSA o bloccata dal firewall aziendale."
+          exit 1
+        fi
