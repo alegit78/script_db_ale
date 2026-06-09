@@ -1,11 +1,11 @@
 name: test_conn_ssh
 
 on:
-  workflow_dispatch: # Ti permette di avviarlo manualmente con un click da GitHub Actions UI
+  workflow_dispatch: 
 
 jobs:
   test-ssh-connection:
-    runs-on: ubuntu-latest # Il runner temporaneo fornito da GitHub
+    runs-on: ubuntu-latest # runner fornito da GitHub
 
     steps:
     - name: Connessione ed esecuzione comando di test via SSH
@@ -15,7 +15,7 @@ jobs:
         username: ${{ secrets.SSH_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: 22
-        timeout: 15s # Se il firewall blocca, si ferma dopo 15 secondi senza rimanere appeso a vuoto
+        timeout: 15s 
         script: |
           echo "=== CONNESSIONE RIUSCITA CON SUCCESSO ==="
           echo "Server Remoto: $(hostname)"
