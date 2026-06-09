@@ -1,7 +1,7 @@
 name: Test Porta 22 su ltocav911
 
 on:
-  workflow_dispatch: # Permette l'avvio manuale dall'interfaccia con un click
+  workflow_dispatch: 
 
 jobs:
   check-port:
@@ -10,16 +10,16 @@ jobs:
     steps:
     - name: Verifica connettività sulla porta 22
       run: |
-        echo "Tento di verificare la porta 22 sull'host configurato..."
+        echo "Verifica accesso porta 22 su ltocav911"
         
-        # nc esegue il test di connessione. -w 5 blocca l'attesa dopo 5 secondi se c'è un muro/firewall
+        
         if nc -zv -w 5 ${{ secrets.SSH_HOST }} 22; then
           echo "======================================================"
           echo "🟢 SUCCESSO: La porta 22 su ltocav911 è APERTA verso GitHub!"
           echo "======================================================"
         else
           echo "======================================================"
-          echo "🔴 ERRORE: La porta 22 è CHIUSA o il DNS Rai è invisibile a GitHub."
+          echo "🔴 ERRORE: La porta 22 è CHIUSA verso GitHub."
           echo "======================================================"
           exit 1
         fi
