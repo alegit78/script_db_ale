@@ -1,18 +1,22 @@
-name: Test Connettivita Porta 22
+name: Test Connessione SSH Oracle
 
-on: [push]
+on:
+  workflow_dispatch: # Ti permette di avviarlo manualmente con un click da GitHub Actions UI
 
 jobs:
-  check-port:
-    runs-on: ubuntu-latest
+  test-ssh-connection:
+    runs-on: ubuntu-latest # Il runner temporaneo fornito da GitHub
 
     steps:
-    - name: Tentativo di connessione alla porta 22
-      run: |
-        echo "Tentativo di connessione..."
-        if nc -z -w 10 utocav915.admin.servizi.rai.it 22; then
-          echo "✅ SUCCESSO: La porta 22 è APERTA!"
-        else
-          echo "❌ ERRORE: La porta 22 è CHIUSA o bloccata."
-          exit 1
-        fi
+    - name: Connessione ed esecuzione comando di test via SSH
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.SSH_HOST }}
+        username: ${{ secrets.SSH_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: 22
+        timeout: 15s # Se il firewall blocca, si ferma dopo 15 secondi senza rimanere appeso a vuoto
+        script: |
+          echo "=== CONNESSIONE RIUSCITA CON SUCCESSO ==="
+          echo "Server Remoto: $(hostname)"
+          echo "Data Server: $(date)"
