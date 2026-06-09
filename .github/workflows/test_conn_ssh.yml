@@ -1,4 +1,4 @@
-name: Test Connessione SSH Oracle
+name: test_conn_ssh
 
 on:
   workflow_dispatch: # Ti permette di avviarlo manualmente con un click da GitHub Actions UI
